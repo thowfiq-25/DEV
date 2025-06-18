@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Step 1: Create sample data and save to CSV
+
 data = {
     'sender': ['alice@example.com', 'bob@example.com', 'alice@example.com'],
     'receiver': ['bob@example.com', 'alice@example.com', 'carol@example.com'],
@@ -19,18 +19,18 @@ df['timestamp'] = pd.to_datetime(df['timestamp'])
 df.to_csv('emails.csv', index=False)
 print("CSV file created successfully.")
 
-# Step 2: Load the data and inspect
+
 df = pd.read_csv("emails.csv")
 print(df.info())
 
-# Step 3: Data preprocessing
+
 df['timestamp'] = pd.to_datetime(df['timestamp'])
 df.dropna(inplace=True)
 
-# Step 4: Add a new column for email length
+
 df['email_length'] = df['content'].apply(len)
 
-# Step 5: Plot distribution of email lengths
+
 plt.figure(figsize=(10, 6))
 sns.histplot(data=df, x='email_length', bins=30, kde=True)
 plt.xlabel('Email Length')
@@ -38,7 +38,7 @@ plt.ylabel('Count')
 plt.title('Distribution of Email Lengths')
 plt.show()
 
-# Step 6: Top 10 email senders
+
 top_senders = df['sender'].value_counts().head(10)
 plt.figure(figsize=(12, 6))
 sns.barplot(x=top_senders.index, y=top_senders.values)
@@ -49,7 +49,7 @@ plt.title('Top 10 Email Senders')
 plt.tight_layout()
 plt.show()
 
-# Step 7: Top 10 email receivers
+
 top_receivers = df['receiver'].value_counts().head(10)
 plt.figure(figsize=(12, 6))
 sns.barplot(x=top_receivers.index, y=top_receivers.values)
@@ -60,7 +60,7 @@ plt.title('Top 10 Email Receivers')
 plt.tight_layout()
 plt.show()
 
-# Step 8: Email activity over time
+
 df['year_month'] = df['timestamp'].dt.to_period('M')
 email_activity = df.groupby('year_month').size()
 

@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Creating a sample dataset
+
 data = {
     'ID': range(1, 11),
     'Age': np.random.randint(18, 65, size=10),
@@ -14,34 +14,34 @@ data = {
     ]
 }
 
-# Create DataFrame
+
 df = pd.DataFrame(data)
 
-# Display first 5 rows
+
 print("🔹 First 5 rows:")
 print(df.head())
 
-# Summary statistics
+
 print("\n🔹 Descriptive statistics:")
 print(df.describe())
 
-# Check for missing values
+
 print("\n🔹 Missing values:")
 print(df.isnull().sum())
 
-# Unique values in categorical columns
+
 print("\n🔹 Unique Genders:", df['Gender'].unique())
 print("🔹 Unique Education Levels:", df['Education'].unique())
 
-# Selecting specific columns
+
 print("\n🔹 Selected Columns (Age & Income):")
 print(df[['Age', 'Income']].head())
 
-# Filter: Age > 30
+
 print("\n🔹 People with Age > 30:")
 print(df[df['Age'] > 30].head())
 
-# Filter: Males with Master's degree
+
 print("\n🔹 Males with Master's Degree:")
 print(df[(df['Gender'] == 'Male') & (df['Education'] == 'Master')].head())
 plt.figure(figsize=(6, 4))
